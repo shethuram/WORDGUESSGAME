@@ -1,0 +1,14 @@
+S:\WordGuessGame\bin\Debug\net9.0\WordGuessGame.exe
+S:\WordGuessGame\bin\Debug\net9.0\WordGuessGame.deps.json
+S:\WordGuessGame\bin\Debug\net9.0\WordGuessGame.runtimeconfig.json
+S:\WordGuessGame\bin\Debug\net9.0\WordGuessGame.dll
+S:\WordGuessGame\bin\Debug\net9.0\WordGuessGame.pdb
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.GeneratedMSBuildEditorConfig.editorconfig
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.AssemblyInfoInputs.cache
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.AssemblyInfo.cs
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.csproj.CoreCompileInputs.cache
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.dll
+S:\WordGuessGame\obj\Debug\net9.0\refint\WordGuessGame.dll
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.pdb
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.genruntimeconfig.cache
+S:\WordGuessGame\obj\Debug\net9.0\ref\WordGuessGame.dll
