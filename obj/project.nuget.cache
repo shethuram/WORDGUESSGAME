@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "iK1PxBeGADg=",
+  "dgSpecHash": "yIw3v7QBeRo=",
   "success": true,
   "projectFilePath": "S:\\WordGuessGame\\WordGuessGame.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sheth\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\sheth\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.0\\microsoft.extensions.logging.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\sheth\\.nuget\\packages\\npgsql\\10.0.2\\npgsql.10.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,8 +1,8 @@
-# Word Guess Game - C# Console Application
+# Word Guess Game - C# Console Application with PostgreSQL and ADO.NET
 
 ## Overview
 
-Word Guess Game is a console-based word guessing application inspired by Wordle, developed using C#, Object-Oriented Programming (OOP), and Exception Handling.
+Word Guess Game is a console-based word guessing application inspired by Wordle, developed using C#, Object-Oriented Programming (OOP), Exception Handling, PostgreSQL, and ADO.NET.
 
 The application challenges players to guess a hidden 5-letter word within limited attempts while providing intelligent feedback for every guess.
 
@@ -12,14 +12,54 @@ The project follows a clean layered architecture using:
 * Interfaces
 * Services
 * Repository Pattern
+* Data Access Layer
 * Custom Exceptions
 * Utility Classes
+* PostgreSQL Database Integration
+* ADO.NET
 
-The application demonstrates proper separation of concerns, scalable design, and maintainable code structure.
+The application demonstrates:
+
+* clean architecture
+* layered application design
+* separation of concerns
+* repository pattern
+* database integration using ADO.NET
+* authentication flow
+* scalable and maintainable code structure
+* enterprise-style console application development.
 
 ---
 
 # Features
+
+## Authentication System
+
+The application includes a complete login and registration system using PostgreSQL.
+
+### Features
+
+* User Registration
+* User Login
+* Session-based gameplay
+* Database-persisted users
+* User-linked game sessions
+
+### Authentication Flow
+
+```text
+Application Starts
+    ↓
+Register / Login
+    ↓
+User Authentication
+    ↓
+Main Menu
+    ↓
+Gameplay
+```
+
+---
 
 ## Core Features
 
@@ -187,6 +227,108 @@ A dedicated Rules menu explains:
 
 ---
 
+# Database Integration
+
+The application integrates PostgreSQL using:
+
+* ADO.NET
+* Npgsql
+* Repository Pattern
+* Connection Factory Pattern
+
+---
+
+## Database Name
+
+```text
+wordguessdb
+```
+
+---
+
+## Database Tables
+
+### users
+
+Stores registered users.
+
+| Column   | Type               |
+| -------- | ------------------ |
+| id       | SERIAL PRIMARY KEY |
+| username | VARCHAR(50)        |
+| password | VARCHAR(100)       |
+
+---
+
+### game_sessions
+
+Stores every completed game session.
+
+| Column        | Type               |
+| ------------- | ------------------ |
+| id            | SERIAL PRIMARY KEY |
+| user_id       | INT                |
+| difficulty    | VARCHAR(20)        |
+| attempts_used | INT                |
+| score         | INT                |
+| time_taken    | INT                |
+| is_won        | BOOLEAN            |
+| played_at     | TIMESTAMP          |
+
+---
+
+### player_statistics
+
+Stores cumulative game statistics.
+
+| Column         | Type               |
+| -------------- | ------------------ |
+| id             | SERIAL PRIMARY KEY |
+| games_played   | INT                |
+| games_won      | INT                |
+| games_lost     | INT                |
+| total_attempts | INT                |
+
+---
+
+## Database Flow
+
+```text
+Game Ends
+    ↓
+Services
+    ↓
+Repositories
+    ↓
+ADO.NET
+    ↓
+PostgreSQL
+```
+
+---
+
+## ADO.NET Components Used
+
+* NpgsqlConnection
+* NpgsqlCommand
+* ExecuteNonQuery()
+* ExecuteReader()
+* Parameterized Queries
+
+---
+
+## Database Initialization
+
+The application automatically creates tables during startup using:
+
+```text
+DatabaseInitializer.cs
+```
+
+This acts similar to migrations in Entity Framework.
+
+---
+
 # Project Architecture
 
 ```text
@@ -225,96 +367,47 @@ WordGuessGame/
 │   ├── ConsoleHelper.cs
 │   └── TimerHelper.cs
 │
+├── Data/
+│   ├── DatabaseInitializer.cs
+│   └── DbConnectionFactory.cs
+│
 └── Program.cs
 ```
 
 ---
 
-# OOP Concepts Used
+## Additional Architecture Components
 
-The project demonstrates:
+### Repository Pattern
 
-* Classes and Objects
-* Encapsulation
-* Interfaces
-* Constructors
-* Collections
-* Loops
-* Conditional Statements
-* Custom Exceptions
-* String Handling
-* Layered Architecture
-* Separation of Concerns
+The application uses repositories to separate database operations from business logic.
 
----
+Repositories used:
 
-# Design Principles Followed
+* WordRepository
+* UserRepository
+* StatisticsRepository
+* GameSessionRepository
 
-## Single Responsibility Principle
+This improves:
 
-Each class handles only one responsibility.
-
-Example:
-
-* GuessValidator handles validation only
-* FeedbackGenerator handles feedback logic only
-* ScoreService handles score calculation only
+* scalability
+* maintainability
+* testability
+* clean architecture
 
 ---
 
-## Separation of Concerns
+## Data Access Layer
 
-The project separates:
+The project uses a dedicated Data layer for:
 
-* Business Logic
-* Validation Logic
-* Data Models
-* Console Utilities
-* Word Data Source
-
-This improves maintainability and scalability.
+* connection management
+* database initialization
+* centralized database configuration
 
 ---
 
-## Repository Pattern
-
-The application uses:
-
-```text
-WordProvider
-```
-
-as a repository/provider layer to manage hidden words.
-
-This keeps word management separate from game logic.
-
----
-
-# How to Run
-
-## Create Project
-
-```bash
-dotnet new console -n WordGuessGame
-```
-
----
-
-## Build Project
-
-```bash
-dotnet build
-```
-
----
-
-## Run Application
-
-```bash
-dotnet run
-```
-
----
 
 # Sample Menu
 

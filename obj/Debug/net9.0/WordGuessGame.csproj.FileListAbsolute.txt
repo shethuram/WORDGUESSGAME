@@ -12,3 +12,9 @@ S:\WordGuessGame\obj\Debug\net9.0\refint\WordGuessGame.dll
 S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.pdb
 S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.genruntimeconfig.cache
 S:\WordGuessGame\obj\Debug\net9.0\ref\WordGuessGame.dll
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.csproj.AssemblyReference.cache
+S:\WordGuessGame\obj\Debug\net9.0\WordGuessGame.sourcelink.json
+S:\WordGuessGame\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+S:\WordGuessGame\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+S:\WordGuessGame\bin\Debug\net9.0\Npgsql.dll
+S:\WordGuessGame\obj\Debug\net9.0\WordGues.4AADCD34.Up2Date

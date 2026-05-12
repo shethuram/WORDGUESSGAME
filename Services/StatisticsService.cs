@@ -3,29 +3,34 @@ using WordGuessGame.Models;
 
 namespace WordGuessGame.Services
 {
-    public class StatisticsService : IStatisticsService
+    public class StatisticsService
+        : IStatisticsService
     {
-        private readonly PlayerStatistics _statistics = new();
+        private readonly IStatisticsRepository
+            _statisticsRepository;
 
-        public void UpdateStatistics(bool isWon, int attemptsUsed)
+        public StatisticsService(
+            IStatisticsRepository statisticsRepository)
         {
-            _statistics.GamesPlayed++;
+            _statisticsRepository =
+                statisticsRepository;
+        }
 
-            if (isWon)
-            {
-                _statistics.GamesWon++;
-            }
-            else
-            {
-                _statistics.GamesLost++;
-            }
-
-            _statistics.TotalAttempts += attemptsUsed;
+        public void UpdateStatistics(
+            bool isWon,
+            int attemptsUsed)
+        {
+            _statisticsRepository
+                .UpdateStatistics(
+                    isWon,
+                    attemptsUsed);
         }
 
         public PlayerStatistics GetStatistics()
         {
-            return _statistics;
+            return _statisticsRepository
+                .GetStatistics();
         }
     }
 }
+

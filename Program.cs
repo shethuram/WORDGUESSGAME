@@ -1,18 +1,41 @@
-﻿using WordGuessGame.Interfaces;
+﻿using WordGuessGame.Data;
+using WordGuessGame.Interfaces;
 using WordGuessGame.Repositories;
 using WordGuessGame.Services;
 
-IWordProvider wordProvider = new WordProvider();
+DatabaseInitializer.Initialize();
 
-IGuessValidator validator = new GuessValidator();
+IWordProvider wordProvider =
+    new WordProvider();
 
-IFeedbackGenerator feedbackGenerator = new FeedbackGenerator();
+IGuessValidator validator =
+    new GuessValidator();
 
-IScoreService scoreService = new ScoreService();
+IFeedbackGenerator feedbackGenerator =
+    new FeedbackGenerator();
 
-IStatisticsService statisticsService = new StatisticsService();
+IScoreService scoreService =
+    new ScoreService();
 
-HintService hintService = new();
+IStatisticsRepository statisticsRepository =
+    new StatisticsRepository();
+
+IStatisticsService statisticsService =
+    new StatisticsService(
+        statisticsRepository);
+
+IGameSessionRepository gameSessionRepository =
+    new GameSessionRepository();
+
+IUserRepository userRepository =
+    new UserRepository();
+
+IAuthenticationService authenticationService =
+    new AuthenticationService(
+        userRepository);
+
+HintService hintService =
+    new();
 
 Game game = new(
     wordProvider,
@@ -20,8 +43,63 @@ Game game = new(
     feedbackGenerator,
     scoreService,
     statisticsService,
-    hintService);
+    hintService,
+    gameSessionRepository);
 
-MenuService menu = new(game, statisticsService);
+MenuService menu =
+    new(game, statisticsService);
 
-menu.ShowMenu();
+bool running = true;
+
+while (running)
+{
+    Console.Clear();
+
+    Console.WriteLine(
+        "===== WORD GUESS GAME =====");
+
+    Console.WriteLine("1. Login");
+
+    Console.WriteLine("2. Register");
+
+    Console.WriteLine("3. Exit");
+
+    Console.Write("\nChoice: ");
+
+    string? choice =
+        Console.ReadLine();
+
+    switch (choice)
+    {
+        case "1":
+
+            SessionService.CurrentUser =
+                authenticationService.Login();
+
+            menu.ShowMenu();
+
+            break;
+
+        case "2":
+
+            authenticationService.Register();
+
+            break;
+
+        case "3":
+
+            running = false;
+
+            break;
+
+        default:
+
+            Console.WriteLine(
+                "Invalid Choice!");
+
+            Console.ReadKey(true);
+
+            break;
+    }
+}
+
